@@ -10,7 +10,7 @@
 		<PackageTags>PID;PidFile;</PackageTags>
 		<AssemblyVersion>1.0.0</AssemblyVersion>
 		<FileVersion>1.0.0</FileVersion>
-		<PackageLicenseFile>..\LICENSE</PackageLicenseFile>
+		<PackageLicenseFile>.\LICENSE</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/Rychu-Pawel/PidFileManager</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
