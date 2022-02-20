@@ -66,6 +66,8 @@ namespace Rychusoft.PidFileManager.HostedServices
             var processId = Environment.ProcessId.ToString();
 #endif
             await File.WriteAllTextAsync(options.PidFilePath, processId);
+
+            logger.LogInformation("PID file created successfully");
         }
 
         private void RemovePidFile()
@@ -73,6 +75,8 @@ namespace Rychusoft.PidFileManager.HostedServices
             try
             {
                 File.Delete(options.PidFilePath);
+
+                logger.LogInformation("PID file deleted successfully");
             }
             catch (Exception ex)
             {
