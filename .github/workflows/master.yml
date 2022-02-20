@@ -1,4 +1,4 @@
-name: .NET
+name: .NET master
 
 on:
   push:
@@ -18,6 +18,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
     - name: Pack
       run: dotnet pack
+    - name: Push
+      env:
+         NUGET_KEY: ${{ secrets.NUGET_KEY }}
+      run: dotnet nuget push --api-key "$NUGET_KEY" --source https://api.nuget.org/v3/index.json
