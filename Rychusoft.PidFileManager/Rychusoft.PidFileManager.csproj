@@ -5,16 +5,17 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Authors>Rychusoft</Authors>
 		<Company>Rychusoft</Company>
-		<Description>Create PID file in ASP.Net Core</Description>
+		<Description>Takes care of creating and deleting PID file in ASP.Net Core applications.</Description>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageTags>PID;PidFile;</PackageTags>
-		<AssemblyVersion>2.0.3</AssemblyVersion>
-		<FileVersion>2.0.3</FileVersion>
+		<AssemblyVersion>2.0.4</AssemblyVersion>
+		<FileVersion>2.0.4</FileVersion>
 		<PackageLicenseFile>.\LICENSE</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/Rychu-Pawel/PidFileManager</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>2.0.3</Version>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://pawelrychlicki.pl/Article/Details/71/create-pid-file-in-aspnet-core-ubuntu-2004--net-5</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
