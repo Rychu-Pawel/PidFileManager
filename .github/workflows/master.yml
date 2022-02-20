@@ -24,4 +24,4 @@ jobs:
     - name: Push
       env:
          NUGET_KEY: ${{ secrets.NUGET_KEY }}
-      run: dotnet nuget push .\nupkgs\** --api-key "$NUGET_KEY" --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./nupkgs/** --api-key "$NUGET_KEY" --source https://api.nuget.org/v3/index.json
