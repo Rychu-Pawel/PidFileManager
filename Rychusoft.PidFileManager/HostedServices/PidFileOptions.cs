@@ -2,7 +2,7 @@
 {
     public class PidFileOptions
     {
-        public bool IsEnabled { get; set; }
+        public bool IsDisabled { get; set; }
         public string PidFilePath { get; set; }
     }
 }

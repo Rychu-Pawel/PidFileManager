@@ -8,12 +8,13 @@
 		<Description>Create PID file in ASP.Net Core</Description>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageTags>PID;PidFile;</PackageTags>
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<FileVersion>1.0.0</FileVersion>
+		<AssemblyVersion>2.0.1</AssemblyVersion>
+		<FileVersion>2.0.1</FileVersion>
 		<PackageLicenseFile>.\LICENSE</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/Rychu-Pawel/PidFileManager</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Version>2.0.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>

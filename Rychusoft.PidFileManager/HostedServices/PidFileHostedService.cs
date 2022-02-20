@@ -28,11 +28,8 @@ namespace Rychusoft.PidFileManager.HostedServices
         {
             try
             {
-                if (!options.IsEnabled || string.IsNullOrWhiteSpace(options.PidFilePath))
-                {
-                    logger.LogWarning($"Skipping PID file creation due to {nameof(PidFileOptions.IsEnabled)} flag set to false or because of empty {nameof(PidFileOptions.PidFilePath)} property.");
+                if (!ValidateOptionsWithLogging())
                     return;
-                }
 
                 await WritePidFile();
 
@@ -42,6 +39,23 @@ namespace Rychusoft.PidFileManager.HostedServices
             {
                 logger.LogError(ex, $"Unhandled exception when starting {nameof(PidFileHostedService)}", null);
             }
+        }
+
+        private bool ValidateOptionsWithLogging()
+        {
+            if (options.IsDisabled)
+            {
+                logger.LogInformation($"Skipping PID file creation due to {nameof(PidFileOptions.IsDisabled)} flag set to true.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(options.PidFilePath))
+            {
+                logger.LogWarning($"Skipping PID file creation because of empty {nameof(PidFileOptions.PidFilePath)} property. Are {nameof(PidFileOptions)} configured correctly?");
+                return false;
+            }
+
+            return true;
         }
 
         private async Task WritePidFile()
