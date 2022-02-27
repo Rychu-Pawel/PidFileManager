@@ -12,15 +12,14 @@ namespace Rychusoft.PidFileManager.HostedServices
     public class PidFileHostedService : IHostedService
     {
         private readonly ILogger<PidFileHostedService> logger;
-        private readonly IHostApplicationLifetime appLifetime;
         private readonly PidFileOptions options;
 
+        private bool isPidFileCreated = false;
+
         public PidFileHostedService(ILogger<PidFileHostedService> logger,
-            IHostApplicationLifetime appLifetime,
             IOptions<PidFileOptions> pidFileOptions)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.appLifetime = appLifetime ?? throw new ArgumentNullException(nameof(appLifetime));
             this.options = pidFileOptions?.Value ?? throw new ArgumentNullException(nameof(pidFileOptions));
         }
 
@@ -33,7 +32,7 @@ namespace Rychusoft.PidFileManager.HostedServices
 
                 await WritePidFile();
 
-                appLifetime.ApplicationStopped.Register(() => RemovePidFile());
+                isPidFileCreated = true;
             }
             catch (Exception ex)
             {
@@ -70,23 +69,31 @@ namespace Rychusoft.PidFileManager.HostedServices
             logger.LogInformation("PID file created successfully");
         }
 
-        private void RemovePidFile()
+        public Task StopAsync(CancellationToken cancellationToken)
         {
             try
             {
-                File.Delete(options.PidFilePath);
-
-                logger.LogInformation("PID file deleted successfully");
+                RemovePidFileIfCreated();
             }
             catch (Exception ex)
             {
                 logger.LogError(ex, "Unexpected error when deleting PID file", null);
             }
+
+            return Task.CompletedTask;
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        private void RemovePidFileIfCreated()
         {
-            return Task.CompletedTask;
+            if (!isPidFileCreated)
+            {
+                logger.LogInformation("Skipping PID file removal because it was not created during start");
+                return;
+            }
+
+            File.Delete(options.PidFilePath);
+
+            logger.LogInformation("PID file deleted successfully");
         }
     }
 }
