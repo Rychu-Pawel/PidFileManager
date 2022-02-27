@@ -8,21 +8,15 @@
 		<Description>Takes care of creating and deleting PID file in ASP.Net Core applications.</Description>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageTags>PID;PidFile;</PackageTags>
-		<AssemblyVersion>2.1.0</AssemblyVersion>
-		<FileVersion>2.1.0</FileVersion>
+		<AssemblyVersion>2.2.0</AssemblyVersion>
+		<FileVersion>2.2.0</FileVersion>
 		<PackageLicenseFile>.\LICENSE</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/Rychu-Pawel/PidFileManager</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>2.1.0</Version>
+		<Version>2.2.0</Version>
 		<PackageProjectUrl>https://pawelrychlicki.pl/Article/Details/71/create-pid-file-in-aspnet-core-ubuntu-2004--net-5</PackageProjectUrl>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -41,6 +35,12 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>
